@@ -2,18 +2,16 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
   getScore,
-  addScore,
   deleteScore,
   startNew
 } from './scoreListSlice';
-import {Table, Modal, Button, InputNumber} from 'antd';
+import {Table, Modal, Button} from 'antd';
 import {DeleteTwoTone, ExclamationCircleOutlined} from '@ant-design/icons';
+import {ScoreModal} from './ScoreModal';
 
 export function ScoreList () {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [scoreWij, setScoreWij] = useState();
-  const [scoreZij, setScoreZij] = useState();
   const score = useSelector(getScore);
   const columns = [
     {
@@ -57,6 +55,8 @@ export function ScoreList () {
     });
   }
 
+  const scoreModal = ScoreModal(isModalVisible, setIsModalVisible);
+
   return (
     <div>
       <Table
@@ -96,57 +96,11 @@ export function ScoreList () {
           Score invoeren
         </Button>
         <Button type='secundary' onClick={showConfirm}>
-          Nieuwe ronde starten
+          Nieuw spel starten
         </Button>
       </div>
 
-      <Modal
-        onCancel={() => setIsModalVisible(false)}
-        title='Voer een nieuwe score in'
-        visible={isModalVisible}
-        footer={[
-          <Button key='back' onClick={() => setIsModalVisible(false)}>
-            Annuleren
-          </Button>,
-          <Button
-            key='submit'
-            type='primary'
-            disabled={scoreWij === undefined || scoreZij === undefined}
-            onClick={() => {
-              dispatch(addScore({wij: scoreWij, zij: scoreZij}));
-              setIsModalVisible(false);
-              setScoreZij(null);
-              setScoreWij(null);
-            }}>
-            Opslaan
-          </Button>
-        ]}
-      >
-        <div className='inputScore'>
-          <InputNumber
-            type='tel'
-            value={scoreWij}
-            min={0}
-            max={262}
-            onChange={(value) => {
-              const diff = (162 - value) > 0 ? 162 - value : 0;
-              setScoreWij(value);
-              setScoreZij(diff);
-            }}
-          />
-          <InputNumber
-            type='tel'
-            value={scoreZij}
-            min={0}
-            max={262}
-            onChange={(value) => {
-              const diff = (162 - value) > 0 ? 162 - value : 0;
-              setScoreZij(value);
-              setScoreWij(diff);
-            }}
-          />
-        </div>
-      </Modal>
+      {scoreModal}
     </div>
   );
 }

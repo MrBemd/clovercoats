@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+body {
+    user-select: none;
+}
+
 .ant-table thead > tr > th {
     text-align: right;
 }
@@ -25,13 +29,17 @@
     margin: 10px;
 }
 
-.inputScore {
-    display: flex;
-    justify-content: space-evenly;
-}
-
 .deleteButton {
     display: flex;
     justify-content: center;
     padding: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.scoreLabel {
+    width: 90px;
+    font-weight: bold;
 }
