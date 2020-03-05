@@ -1,0 +1,43 @@
+@import '~antd/dist/antd.css';
+
+/*.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}*/
+
+
+.ant-table thead > tr > th {
+    text-align: right;
+}
+
+.ant-table table {
+    text-align: right;
+}
+
+.ant-table-footer {
+    padding: 0;
+}
+
+.buttonContainer {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+.inputScore {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.deleteButton {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
