@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/clovercoats/static/css/main.b83eda29.chunk.css",
-    "main.js": "/clovercoats/static/js/main.2fc4516b.chunk.js",
-    "main.js.map": "/clovercoats/static/js/main.2fc4516b.chunk.js.map",
+    "main.js": "/clovercoats/static/js/main.23675395.chunk.js",
+    "main.js.map": "/clovercoats/static/js/main.23675395.chunk.js.map",
     "runtime-main.js": "/clovercoats/static/js/runtime-main.fbea59fb.js",
     "runtime-main.js.map": "/clovercoats/static/js/runtime-main.fbea59fb.js.map",
     "static/css/2.03d7f783.chunk.css": "/clovercoats/static/css/2.03d7f783.chunk.css",
     "static/js/2.f77183a2.chunk.js": "/clovercoats/static/js/2.f77183a2.chunk.js",
     "static/js/2.f77183a2.chunk.js.map": "/clovercoats/static/js/2.f77183a2.chunk.js.map",
     "index.html": "/clovercoats/index.html",
-    "precache-manifest.55ccb59fd78f85e020c62c41347388ec.js": "/clovercoats/precache-manifest.55ccb59fd78f85e020c62c41347388ec.js",
+    "precache-manifest.c8d0110f244c6166116a0181a86f74ff.js": "/clovercoats/precache-manifest.c8d0110f244c6166116a0181a86f74ff.js",
     "service-worker.js": "/clovercoats/service-worker.js",
     "static/css/2.03d7f783.chunk.css.map": "/clovercoats/static/css/2.03d7f783.chunk.css.map",
     "static/css/main.b83eda29.chunk.css.map": "/clovercoats/static/css/main.b83eda29.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.03d7f783.chunk.css",
     "static/js/2.f77183a2.chunk.js",
     "static/css/main.b83eda29.chunk.css",
-    "static/js/main.2fc4516b.chunk.js"
+    "static/js/main.23675395.chunk.js"
   ]
 }

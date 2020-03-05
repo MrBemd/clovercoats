@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0304582eb92c5d5558dfd156b8c3dc3d",
+    "revision": "a6187a532e39bdbe075de16d06970818",
     "url": "/clovercoats/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/clovercoats/static/css/2.03d7f783.chunk.css"
   },
   {
-    "revision": "519eeb1fb6736266a2c3",
+    "revision": "f4c0102c8beb409dff68",
     "url": "/clovercoats/static/css/main.b83eda29.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/clovercoats/static/js/2.f77183a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "519eeb1fb6736266a2c3",
-    "url": "/clovercoats/static/js/main.2fc4516b.chunk.js"
+    "revision": "f4c0102c8beb409dff68",
+    "url": "/clovercoats/static/js/main.23675395.chunk.js"
   },
   {
     "revision": "11c7f162c5209a4b7d09",
