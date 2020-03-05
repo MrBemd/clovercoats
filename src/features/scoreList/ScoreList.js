@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
   getScore,
-  addScore
+  addScore,
+  deleteScore
 } from './scoreListSlice';
 import {Table, Modal, Button, InputNumber} from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
@@ -32,38 +33,45 @@ export function ScoreList () {
     {
       title: '',
       key: 'delete',
-      render: () => {
-        return <div className='deleteButton'><DeleteOutlined /></div>;
+      render: (itm) => {
+        return <div className='deleteButton'><DeleteOutlined onClick={() => {dispatch(deleteScore(itm.key));}} /></div>;
       }
     }
   ];
 
   return (
     <div>
-      <Table dataSource={score} columns={columns} pagination={false} summary={pageData => {
-        let totalWij = 0;
-        let totalZij = 0;
+      <Table
+        dataSource={score}
+        columns={columns}
+        pagination={false}
+        locale={{
+          emptyText: 'Nog geen score vastgelegd'
+        }}
+        summary={pageData => {
+          let totalWij = 0;
+          let totalZij = 0;
 
-        pageData.forEach(({wij, zij}) => {
-          totalWij += wij;
-          totalZij += zij;
-        });
+          pageData.forEach(({wij, zij}) => {
+            totalWij += wij;
+            totalZij += zij;
+          });
 
-        return (
-          <>
-            <tr>
-              <th>Totaal</th>
-              <td>
-                <strong>{totalWij}</strong>
-              </td>
-              <td>
-                <strong>{totalZij}</strong>
-              </td>
-              <td />
-            </tr>
-          </>
-        );
-      }} />
+          return (
+            <>
+              <tr>
+                <th>Totaal</th>
+                <td>
+                  <strong>{totalWij}</strong>
+                </td>
+                <td>
+                  <strong>{totalZij}</strong>
+                </td>
+                <td />
+              </tr>
+            </>
+          );
+        }} />
 
       <div className='buttonContainer'>
         <Button type='primary' onClick={() => setIsModalVisible(true)}>
@@ -92,19 +100,23 @@ export function ScoreList () {
       >
         <div className='inputScore'>
           <InputNumber
-            defaultValue={scoreWij}
+            value={scoreWij}
             min={0}
             max={262}
             onChange={(value) => {
+              const diff = (162 - value) > 0 ? 162 - value : 0;
               setScoreWij(value);
+              setScoreZij(diff);
             }}
           />
           <InputNumber
-            defaultValue={scoreZij}
+            value={scoreZij}
             min={0}
             max={262}
             onChange={(value) => {
+              const diff = (162 - value) > 0 ? 162 - value : 0;
               setScoreZij(value);
+              setScoreWij(diff);
             }}
           />
         </div>

@@ -18,8 +18,8 @@
     text-align: right;
 }
 
-.ant-table-footer {
-    padding: 0;
+.ant-table-placeholder {
+    text-align: center;
 }
 
 .buttonContainer {

@@ -28,11 +28,21 @@ export const slice = createSlice({
         wij: action.payload.wij,
         zij: action.payload.zij
       });
+    },
+    deleteScore: (state, action) => {
+
+      state.score = state.score.filter((itm) => {return itm.key !== action.payload;});
+
+      // reset lastRound
+      if (state.lastRound > 0) {
+        state.lastRound--;
+      }
+
     }
   }
 });
 
 export const getScore = state => state.score.score;
-export const {addScore} = slice.actions;
+export const {addScore, deleteScore} = slice.actions;
 
 export default slice.reducer;
