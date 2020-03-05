@@ -3,16 +3,17 @@ import {useSelector, useDispatch} from 'react-redux';
 import {
   getScore,
   addScore,
-  deleteScore
+  deleteScore,
+  startNew
 } from './scoreListSlice';
 import {Table, Modal, Button, InputNumber} from 'antd';
-import {DeleteOutlined} from '@ant-design/icons';
+import {DeleteTwoTone, ExclamationCircleOutlined} from '@ant-design/icons';
 
 export function ScoreList () {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [scoreWij, setScoreWij] = useState(0);
-  const [scoreZij, setScoreZij] = useState(0);
+  const [scoreWij, setScoreWij] = useState();
+  const [scoreZij, setScoreZij] = useState();
   const score = useSelector(getScore);
   const columns = [
     {
@@ -34,10 +35,27 @@ export function ScoreList () {
       title: '',
       key: 'delete',
       render: (itm) => {
-        return <div className='deleteButton'><DeleteOutlined onClick={() => {dispatch(deleteScore(itm.key));}} /></div>;
+        return <div className='deleteButton'>
+          <DeleteTwoTone twoToneColor='#eb2f96' onClick={() => {dispatch(deleteScore(itm.key));}} />
+        </div>;
       }
     }
   ];
+
+  const {confirm} = Modal;
+
+  function showConfirm () {
+    confirm({
+      title: 'Wil je een nieuw spel starten?',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Alle scores worden gereset.',
+      cancelText: 'Annuleren',
+      okText: 'Bevestigen',
+      onOk () {
+        dispatch(startNew());
+      }
+    });
+  }
 
   return (
     <div>
@@ -46,7 +64,7 @@ export function ScoreList () {
         columns={columns}
         pagination={false}
         locale={{
-          emptyText: 'Nog geen score vastgelegd'
+          emptyText: 'Nog geen score'
         }}
         summary={pageData => {
           let totalWij = 0;
@@ -77,29 +95,36 @@ export function ScoreList () {
         <Button type='primary' onClick={() => setIsModalVisible(true)}>
           Score invoeren
         </Button>
+        <Button type='secundary' onClick={showConfirm}>
+          Nieuwe ronde starten
+        </Button>
       </div>
 
       <Modal
         onCancel={() => setIsModalVisible(false)}
         title='Voer een nieuwe score in'
-        centered
         visible={isModalVisible}
         footer={[
           <Button key='back' onClick={() => setIsModalVisible(false)}>
             Annuleren
           </Button>,
-          <Button key='submit' type='primary' onClick={() => {
-            dispatch(addScore({wij: scoreWij, zij: scoreZij}));
-            setIsModalVisible(false);
-            setScoreZij(0);
-            setScoreWij(0);
-          }}>
+          <Button
+            key='submit'
+            type='primary'
+            disabled={scoreWij === undefined || scoreZij === undefined}
+            onClick={() => {
+              dispatch(addScore({wij: scoreWij, zij: scoreZij}));
+              setIsModalVisible(false);
+              setScoreZij(null);
+              setScoreWij(null);
+            }}>
             Opslaan
           </Button>
         ]}
       >
         <div className='inputScore'>
           <InputNumber
+            type='tel'
             value={scoreWij}
             min={0}
             max={262}
@@ -110,6 +135,7 @@ export function ScoreList () {
             }}
           />
           <InputNumber
+            type='tel'
             value={scoreZij}
             min={0}
             max={262}

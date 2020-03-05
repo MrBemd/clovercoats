@@ -1,15 +1,5 @@
 @import '~antd/dist/antd.css';
 
-/*.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-}*/
-
-
 .ant-table thead > tr > th {
     text-align: right;
 }
@@ -25,10 +15,14 @@
 .buttonContainer {
     margin: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+}
+
+.buttonContainer button {
+    margin: 10px;
 }
 
 .inputScore {

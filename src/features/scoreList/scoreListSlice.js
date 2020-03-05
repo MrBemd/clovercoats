@@ -38,11 +38,15 @@ export const slice = createSlice({
         state.lastRound--;
       }
 
+    },
+    startNew: (state) => {
+      state.score = [];
+      state.lastRound = 0;
     }
   }
 });
 
 export const getScore = state => state.score.score;
-export const {addScore, deleteScore} = slice.actions;
+export const {addScore, deleteScore, startNew} = slice.actions;
 
 export default slice.reducer;
