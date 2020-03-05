@@ -3,21 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 export const slice = createSlice({
   name: 'score',
   initialState: {
-    lastRound: 2,
-    score: [
-      {
-        key: 0,
-        round: 1,
-        wij: 120,
-        zij: 43
-      },
-      {
-        key: 1,
-        round: 2,
-        wij: 120,
-        zij: 43
-      }
-    ]
+    lastRound: 0,
+    score: []
   },
   reducers: {
     addScore: (state, action) => {
