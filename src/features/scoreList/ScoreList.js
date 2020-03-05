@@ -64,7 +64,7 @@ export function ScoreList () {
         columns={columns}
         pagination={false}
         locale={{
-          emptyText: 'Nog geen score'
+          emptyText: 'Nog geen score ingevoerd'
         }}
         summary={pageData => {
           let totalWij = 0;
