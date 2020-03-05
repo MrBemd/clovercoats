@@ -51,7 +51,7 @@ export function ScoreModal (isModalVisible, setIsModalVisible) {
             }}
           />
           <div className='center'>Roem {roemWij}</div>
-          <Slider value={roemWij} defaultValue={0} min={0} max={100} step={10} onChange={(value) => {
+          <Slider value={roemWij} defaultValue={0} min={0} max={150} step={10} onChange={(value) => {
             setRoemWij(value);
           }} />
         </Col>
@@ -70,7 +70,7 @@ export function ScoreModal (isModalVisible, setIsModalVisible) {
             }}
           />
           <div className='center'>Roem {roemZij}</div>
-          <Slider value={roemZij} defaultValue={0} min={0} max={100} step={10} onChange={(value) => {
+          <Slider value={roemZij} defaultValue={0} min={0} max={150} step={10} onChange={(value) => {
             setRoemZij(value);
           }} />
         </Col>
